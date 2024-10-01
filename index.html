@@ -1,14 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Notch Proxy</title>
-  </head>
-  <body>
-    <h1>Notch Proxy</h1>
-    <form id="proxy-form">
-      <input type="url" id="url" placeholder="Enter a URL">
-      <button id="submit">Go</button>
-    </form>
-    <div id="proxy-content"></div>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotchProxy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid #ccc;
+        }
+        select {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>NotchProxy</h1>
+    <select id="serviceSelector">
+        <option value="">Select a service</option>
+        <option value="https://discord.com" target="_blank">Discord</option>
+        <option value="https://www.google.com" target="_blank">Google</option>
+    </select>
+    <button id="loadService">Load Service</button>
+    <iframe id="serviceFrame"></iframe>
+
+    <script>
+        document.getElementById('loadService').addEventListener('click', function() {
+            const selectedService = document.getElementById('serviceSelector').value;
+            if (selectedService) {
+                // For demo purposes, it opens in iframe (won't work due to CORS)
+                document.getElementById('serviceFrame').src = selectedService;
+            } else {
+                alert('Please select a service.');
+            }
+        });
+    </script>
+</body>
 </html>
